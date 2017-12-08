@@ -35,9 +35,14 @@ public class LivingThing {
 
     public void setName(String name) { this.name = name; }
 
+    public  int getAttack(){ return this.attack; }
+
+    public void setAttack(int attack) { this.attack = attack; }
+
     public void attack(LivingThing opponent) {
         if (!dead) {
             int damage = (int) (Math.random() * attack);
+
             System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
             opponent.wounded(damage);
 

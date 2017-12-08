@@ -16,6 +16,25 @@ public class Enemy extends LivingThing {
         super(name,maximumHP,attack);
 
     }
+    public void attack(LivingThing opponent) {
+        int damege = (int) (Math.random() * getAttack());
+        int kakusin = (int) (Math.random() * 10 + 1);
+        if (!isDead()) {
+
+            if (kakusin <= 3) {
+
+                System.out.printf("%sの攻撃！痛恨の一撃！！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damege *2);
+                opponent.wounded(damege * 2);
+            } else if (damege == 0) {
+                System.out.printf("%sの攻撃！,,,だが、%sは攻撃を回避した！", getName(), opponent.getName());
+            } else{
+                System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damege);
+                opponent.wounded(damege);
+
+            }
+
+        }
+    }
 
     /**
      * getterメソッドと同等。生死をboolean表現しているためメソッド名をisDead()とした。

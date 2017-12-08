@@ -17,19 +17,34 @@ public class Hero extends LivingThing{
 
 
 
+    public void attack(LivingThing opponent) {
+        int damege = (int) (Math.random() * getAttack());
+        int kakusin = (int) (Math.random() * 10 + 1);
+        if (!isDead()) {
 
-    /**
-     * 自身へ攻撃されたときのダメージ処理をするメソッド。
-     * 指定されたダメージを hitPoint から引き、死亡判定を行う。
-     * @param damage 受けたダメージ
-     */
-    public void wounded(int damage) {
-        hitPoint -= damage;
-        if (hitPoint < 0) {
-            setDead(true);
-            System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", getName());
+            if (kakusin <= 4) {
+
+                System.out.printf("%sの攻撃！会心の一撃！！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damege *2);
+                opponent.wounded(damege * 2);
+            } else if (damege == 0) {
+                System.out.printf("%sの攻撃！,,,だが、%sは攻撃を回避した！\n", getName(), opponent.getName());
+            } else{
+                System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damege);
+                opponent.wounded(damege);
+
+            }
 
         }
     }
+
+    public void wounded(int damage) {
+        setHitPoint(getHitPoint() - damage);
+        if (getHitPoint() < 0) {
+            setDead(true);
+            System.out.printf("%sは道半ばで力尽きてしまった。\n", getName());
+        }
+    }
+
+
 
 }
