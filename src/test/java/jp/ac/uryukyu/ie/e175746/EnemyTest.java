@@ -1,10 +1,10 @@
 package jp.ac.uryukyu.ie.e175746;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class EnemyTest {
+public class EnemyTest {
     @Test
     public void attack() {
         int heroHP = 10;
@@ -15,7 +15,6 @@ class EnemyTest {
             enemy.attack(hero); //乱数で0ダメージとなることもあるため、複数回実行してみる。
         }
         assertEquals(heroHP, hero.getHitPoint());
-
     }
 
 }
